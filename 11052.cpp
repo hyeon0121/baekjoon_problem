@@ -18,8 +18,7 @@ void maxPrice(int n) {
 	}
 }
 
-int main(void)
-{
+int main(void) {
 	int t;
 	cin >> t;
 	
