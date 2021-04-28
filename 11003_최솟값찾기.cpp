@@ -1,36 +1,38 @@
 #include<iostream>
-#include<algorithm>
-#include<string>
-#include<queue>
-#include<vector>
+#include<deque>
 
 using namespace std;
 
-int n;
-int arr[1501][1501];
+int n,l;
+int arr[5000000];
 
 int main(void) {
-    cin >> n;
-    priority_queue<int, vector<int>> pq;
-
+    ios_base::sync_with_stdio(0);
+    cin.tie(0); //cin 실행속도 향상
+    
+    cin >> n >> l;
+    
     for (int i = 0; i < n; ++i) {
         cin >> arr[i];
     }
 
-    vector<int> v(n,n-1);
+    deque<int> dq;
 
-    int cnt = 0;
-    4 0 1 2 3 4
-    3 0 
-    while(cnt < 0) {
-        for (int i = 0; i < n; ++i) {
-            /* code */
+    for (int i = 0; i < n; ++i){
+        if (!dq.empty() && dq.front() < i-l+1) {
+            dq.pop_front();
         }
+
+        while (!dq.empty() && arr[dq.back()] > arr[i]) {
+            dq.pop_back();
+        }
+
+        dq.push_back(i);
+        cout << arr[dq.front()] << ' ';
+
     }
-
-    cout << answer;
-
     
     return 0;
 
 }
+
